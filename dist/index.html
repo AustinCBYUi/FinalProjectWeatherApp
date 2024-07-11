@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+  <script type="module" crossorigin src="/assets/main-DMnL_r4m.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-BkrtThHu.css">
+</head>
+<header id="dynamic-header"></header>
+<body>
+    <main>
+        <form class="search" id="weatherForm" action="/weathercsc/">
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" placeholder="San Diego">
+            </div>
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="CA">
+            </div>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <input type="text" id="country" name="country" placeholder="USA">
+            </div>
+            <div class="form-group">
+                <label for="save">Save Data?</label>
+                <input type="checkbox" id="save" name="save">
+            </div>
+            <button type="submit">Search</button>
+        </form>
+        <div>
+            <button id="simpleWeather">Simple Weather</button>
+            <button id="advancedWeather">Advanced Weather</button>
+        </div>
+        <!-- <div id="weatherContainer"></div> -->
+    </main>
+</body>
+<footer id="dynamic-footer"></footer>
+</html>

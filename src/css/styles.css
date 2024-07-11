@@ -1,0 +1,114 @@
+/*
+* PRIMARY: #0C1618
+* SECONDARY: #004643
+* ACCENT: #FAF4D3
+*/
+
+:root {
+    --pc: #0C1618;
+    --sc: #004643;
+    --ac: #FAF4D3;
+    --wh: white;
+}
+
+body {
+    background-color: rgba(133, 133, 133, 0.633);
+}
+
+#dynamic-header {
+    background-color: var(--pc);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.search {
+    background-color: var(--pc);
+    margin: 10px auto;
+    display: flex;
+    padding: 20px;
+    max-width: 900px;
+}
+.form-group {
+    color: black;
+    background-color: var(--ac);
+    margin: 0 auto;
+    padding: 10px;
+}
+.form-group:hover {
+    color: white;
+    background-color: var(--sc);
+}
+form button {
+    color: white;
+    background-color: var(--sc);
+    margin: 0 auto;
+    border: none;
+    width: 80px;
+    cursor: pointer;
+}
+form button:hover {
+    background-color: var(--ac);
+    color: var(--pc);
+}
+.weatherbuttons {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 10px;
+}
+.weatherbuttons button {
+    color: white;
+    background-color: var(--sc);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+.weatherbuttons button:hover {
+    background-color: var(--ac);
+    color: var(--pc);
+}
+.weather-card {
+    background-color: var(--pc);
+    color: white;
+    margin: 10px auto;
+    padding: 10px;
+    max-width: 900px;
+    text-align: center;
+}
+.forecast-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin: 10px auto;
+}
+.forecast-grid-item {
+    background-color: var(--sc);
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+.forecast-grid-item img {
+    width: 100px;
+}
+
+.alertdiv {
+    background-color: rgba(43, 148, 43, 0.803);
+    color: black;
+    text-align: center;
+    font-size: 20px;
+    max-width: 95%;
+    margin: 0 auto;
+}
+
+/* FOOTER */
+#dynamic-footer {
+    background-color: var(--pc);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin: 10px auto;
+    max-width: 1000px;
+}
