@@ -1,3 +1,5 @@
+const apiKey = import.meta.env.VITE_API_KEY; // Importing the API key from the .env file
+
 export default class WeatherForm {
     constructor(city, state, country) {
         this.city = city;
@@ -6,7 +8,6 @@ export default class WeatherForm {
     }
 
     async fetchWeatherData(type = "simple") {
-        const apiKey = import.meta.env.API_KEY; // Importing the API key from the .env file
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${this.city},${this.state},${this.country}&appid=${apiKey}&units=imperial`;
 
         if (type === "forecast") {

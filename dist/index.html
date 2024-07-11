@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
-  <script type="module" crossorigin src="/assets/main-DMnL_r4m.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-BkrtThHu.css">
+  <script type="module" crossorigin src="/assets/main-D70bE6pB.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-Cl7w9F_p.css">
 </head>
 <header id="dynamic-header"></header>
 <body>
     <main>
-        <form class="search" id="weatherForm" action="/weathercsc/">
+        <div class="alertdiv">
+            <p class="alert-text"></p>
+        </div>
+        <form class="search" id="weatherForm">
             <div class="form-group">
                 <label for="city">City</label>
                 <input type="text" id="city" name="city" placeholder="San Diego">
@@ -23,17 +26,13 @@
                 <label for="country">Country</label>
                 <input type="text" id="country" name="country" placeholder="USA">
             </div>
-            <div class="form-group">
-                <label for="save">Save Data?</label>
-                <input type="checkbox" id="save" name="save">
-            </div>
-            <button type="submit">Search</button>
+            <button type="submit">Fetch</button>
         </form>
-        <div>
+        <div class="weatherbuttons">
             <button id="simpleWeather">Simple Weather</button>
-            <button id="advancedWeather">Advanced Weather</button>
+            <button id="forecastWeather">Forecast Weather</button>
         </div>
-        <!-- <div id="weatherContainer"></div> -->
+        <div id="weatherContainer"></div>
     </main>
 </body>
 <footer id="dynamic-footer"></footer>
