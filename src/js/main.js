@@ -108,16 +108,20 @@ document.getElementById("forecastWeather").addEventListener("click", async funct
 //----------------------------- End of City stuff -----------------------------
 
 //----------------------------- Zip stuff here -----------------------------
-document.getElementById("zip-form").addEventListener("submit", function (e) {
-    event.preventDefault();
-    const alert = document.querySelector(".alert-text");
-    alert.innerHTML = "The data has been retrieved!";
-    const zip = document.getElementById("zip").value;
+if (zipSearchDiv.hasAttribute("hidden")) {
+    return;
+} else {
+    document.getElementById("zip-form").addEventListener("submit", function (e) {
+        event.preventDefault();
+        const alert = document.querySelector(".alert-text");
+        alert.innerHTML = "The data has been retrieved!";
+        const zip = document.getElementById("zip").value;
 
-    const weather = new WeatherForm(zip);
+        const weather = new WeatherForm(zip);
 
-    localStorage.setItem("lastSearch", JSON.stringify({ zip }));
-});
+        localStorage.setItem("lastSearch", JSON.stringify({ zip }));
+    });
+}
 
 //Listener for simple weather
 document.getElementById("simpleWeather-zip").addEventListener("click", async function() {
