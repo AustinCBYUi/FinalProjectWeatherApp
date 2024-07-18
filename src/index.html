@@ -9,27 +9,70 @@
 <header id="dynamic-header"></header>
 <body>
     <main>
-        <div class="alertdiv">
+        <div class="alert-good">
             <p class="alert-text"></p>
         </div>
-        <form class="search" id="weatherForm">
-            <div class="form-group">
-                <label for="city">City</label>
-                <input type="text" id="city" name="city" placeholder="San Diego">
+        <div class="alert-bad">
+            <p class="alert-text"></p>
+        </div>
+        <div class="weather-controller">
+            <h2>Search by</h2>
+            <div class="weatherbuttons">
+                <button id="lat">Latitude/Longitude</button>
+                <button id="city">City/State/Country</button>
+                <button id="zip">Zipcode</button>
             </div>
-            <div class="form-group">
-                <label for="state">State</label>
-                <input type="text" id="state" name="state" placeholder="CA">
+            <!-- Using a container works to hide it.-->
+            <div class="lat-lon-form" hidden>
+                <form class="search" id="weatherFormLatLon">
+                    <div class="form-group">
+                        <label for="latitude">Latitude</label>
+                        <input type="text" id="latitude" name="latitude" placeholder="32.7157">
+                    </div>
+                    <div class="form-group">
+                        <label for="longitude">Longitude</label>
+                        <input type="text" id="longitude" name="longitude" placeholder="-117.1611">
+                    </div>
+                    <button type="submit" id="simpleWeather">Today</button>
+                    <button type="submit" id="forecastWeather">Forecast Weather</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="country">Country</label>
-                <input type="text" id="country" name="country" placeholder="USA">
+            <!-- End of Lat/Lon Form -->
+            
+            <div class="city-form" hidden>
+                <form class="search" id="weatherForm">
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" placeholder="San Diego">
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <input type="text" id="state" name="state" placeholder="CA">
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" name="country" placeholder="USA">
+                    </div>
+                    <div class="weatherbuttons">
+                        <button type="submit" id="simpleWeather">Today</button>
+                        <button type="submit" id="forecastWeather">Forecast Weather</button>
+                    </div>
+                </form>
             </div>
-            <button type="submit">Fetch</button>
-        </form>
-        <div class="weatherbuttons">
-            <button id="simpleWeather">Simple Weather</button>
-            <button id="forecastWeather">Forecast Weather</button>
+            <!-- End of City Form -->
+
+            <!-- Start of Zipcode form -->
+            <div class="zip-form" hidden>
+                <form class="search" id="weatherFormZip">
+                    <div class="form-group">
+                        <label for="zip">Zipcode</label>
+                        <input type="text" id="zip" name="zip" placeholder="92101">
+                    </div>
+                    <button type="submit" id="simpleWeather">Today</button>
+                    <button type="submit" id="forecastWeather">Forecast Weather</button>
+                </form>
+            </div>
+            <!-- End of Zipcode form -->
         </div>
         <div id="weatherContainer"></div>
     </main>

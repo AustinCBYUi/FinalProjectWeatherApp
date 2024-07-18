@@ -13,6 +13,33 @@
 
 body {
     background-color: rgba(133, 133, 133, 0.633);
+    overflow: auto;
+}
+
+.nav-button {
+    color: white;
+    background-color: var(--sc);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    text-decoration: none;
+}
+.nav-button:hover {
+    background-color: #639a97;
+    color: var(--wh);
+}
+.nav-button-active {
+    color: white;
+    background-color: #639a97;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    text-decoration: none;
+}
+.nav-button-active:hover {
+    background-color: #639a97;
+    color: var(--wh);
+
 }
 
 #dynamic-header {
@@ -24,6 +51,10 @@ body {
     max-width: 1000px;
 }
 
+.weather-controller h2 {
+    text-align: center;
+    margin: 10px auto;
+}
 .search {
     background-color: var(--pc);
     margin: 10px auto;
@@ -94,13 +125,22 @@ form button:hover {
     width: 100px;
 }
 
-.alertdiv {
+.alert-good {
     background-color: rgba(43, 148, 43, 0.803);
     color: black;
     text-align: center;
     font-size: 20px;
     max-width: 95%;
     margin: 0 auto;
+}
+.alert-bad {
+    background-color: rgba(148, 43, 43, 0.803);
+    color: black;
+    text-align: center;
+    font-size: 20px;
+    max-width: 95%;
+    margin: 0 auto;
+
 }
 
 /* FOOTER */
@@ -111,4 +151,30 @@ form button:hover {
     text-align: center;
     margin: 10px auto;
     max-width: 1000px;
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        overflow: auto;
+    }
+    .forecast-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .forecast-grid-item {
+        padding: 10px;
+    }
+    .forecast-grid-item img {
+        width: 50px;
+    }
+    .search {
+        display: block;
+    }
+    .form-group {
+        margin: 10px auto;
+    }
+    .search button {
+        width: 100%;
+        margin: 0 auto;
+    }
+    
 }

@@ -10,7 +10,6 @@ Licensing: N/A | Protected
 
 
 TODOs:
-- Work on mobile view.
 - Check rubric
 - Continue polishing functionality of API calls
 - Work on advanced weather calls
@@ -19,6 +18,7 @@ TODOs:
 - Work on separate pages for separate search parameters?
 
 COMPLETE:
+- Work on mobile view.
 - Overall structure of project
 - Hard logic / API gateway
 - Primary index

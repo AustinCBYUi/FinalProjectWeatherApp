@@ -9,6 +9,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "src/index.html"),
+        advanced: resolve(__dirname, "src/weatheradv/index.html"),
       },
     },
   },

@@ -1,22 +1,60 @@
 const apiKey = import.meta.env.VITE_API_KEY; // Importing the API key from the .env file
 
+async function fetchLatLonWeatherData(type = "simple") {
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.lon}&appid=${apiKey}&units=imperial`;
+
+    if (type === "forecast") {
+        url = `https://api.openweathermap.org/data/2.5/forecast?lat=${this.lat}&lon=${this.lon}&appid=${apiKey}&units=imperial`;
+    }
+
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+}
+
+
+async function fetchZipWeatherData(type = "simple") {
+    let url = `https://api.openweathermap.org/data/2.5/weather?zip=${this.zip}&appid=${apiKey}&units=imperial`;
+
+    if (type === "forecast") {
+        url = `https://api.openweathermap.org/data/2.5/forecast?zip=${this.zip}&appid=${apiKey}&units=imperial`;
+    }
+
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+}
+
+
+async function fetchCityWeatherData(type = "simple") {
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${this.city},${this.state},${this.country}&appid=${apiKey}&units=imperial`;
+
+    if (type === "forecast") {
+        url = `https://api.openweathermap.org/data/2.5/forecast?q=${this.city},${this.state},${this.country}&appid=${apiKey}&units=imperial`;
+    }
+
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+}
+
 export default class WeatherForm {
-    constructor(city, state, country) {
+    constructor(type, city, state, country, zip, lat, lon) {
+        this.type = type;
         this.city = city;
         this.state = state;
         this.country = country;
-    }
+        this.zip = zip;
+        this.lat = lat;
+        this.lon = lon;
 
-    async fetchWeatherData(type = "simple") {
-        let url = `https://api.openweathermap.org/data/2.5/weather?q=${this.city},${this.state},${this.country}&appid=${apiKey}&units=imperial`;
-
-        if (type === "forecast") {
-            url = `https://api.openweathermap.org/data/2.5/forecast?q=${this.city},${this.state},${this.country}&appid=${apiKey}&units=imperial`;
+        if (type === "lat") {
+            this.fetchWeatherData = fetchLatLonWeatherData;
+        } else if (type === "city") {
+            this.fetchWeatherData = fetchCityWeatherData;
+        } else if (type === "zip") {
+            this.fetchWeatherData = fetchZipWeatherData;
         }
-
-        const response = await fetch(url);
-        const data = await response.json();
-        return data;
     }
 }
 
