@@ -19,8 +19,8 @@
             <h2>Search by</h2>
             <div class="weatherbuttons">
                 <button id="lat">Latitude/Longitude</button>
-                <button id="city">City/State/Country</button>
-                <button id="zip">Zipcode</button>
+                <!-- Was named city for ID, that caused major issues..-->
+                <button id="cityButton">City/State/Country</button>
             </div>
             <!-- Using a container works to hide it.-->
             <div class="lat-lon-form" hidden>
@@ -54,25 +54,12 @@
                         <input type="text" id="country" name="country" placeholder="USA">
                     </div>
                     <div class="weatherbuttons">
-                        <button type="submit" id="simpleWeather">Today</button>
-                        <button type="submit" id="forecastWeather">Forecast Weather</button>
+                        <button type="submit" id="simpleWeatherCity">Today</button>
+                        <button type="submit" id="forecastWeatherCity">Forecast Weather</button>
                     </div>
                 </form>
             </div>
             <!-- End of City Form -->
-
-            <!-- Start of Zipcode form -->
-            <div class="zip-form" hidden>
-                <form class="search" id="weatherFormZip">
-                    <div class="form-group">
-                        <label for="zip">Zipcode</label>
-                        <input type="text" id="zip" name="zip" placeholder="92101">
-                    </div>
-                    <button type="submit" id="simpleWeather">Today</button>
-                    <button type="submit" id="forecastWeather">Forecast Weather</button>
-                </form>
-            </div>
-            <!-- End of Zipcode form -->
         </div>
         <div id="weatherContainer"></div>
     </main>
