@@ -23,6 +23,8 @@ latSearch.addEventListener("click", async function (e) {
     document.getElementById("weatherFormLatLon").addEventListener("submit", async function (e) {
         event.preventDefault();
         try {
+            const simpleButton = document.querySelector("#simpleWeather");
+            const forecastButton = document.querySelector("#forecastWeather");
             const alert = document.querySelector(".alert-text");
             alert.innerHTML = "The data has been retrieved!";
             const lat = document.getElementById("latitude").value;
@@ -31,31 +33,19 @@ latSearch.addEventListener("click", async function (e) {
             const weather = new WeatherFormCoord(lat, lon);
     
             localStorage.setItem("lastSearch", JSON.stringify({ lat, lon }));
-            const data = await weather.fetchWeatherDataCoords("simple");
-            renderCoordTemplateCard(data, "simple");
+            
+            //If the user clicks simple, it will render the simple weather card.document.getElementById("simpleWeatherCity").addEventListener("click", async function() {
+            simpleButton.addEventListener("click", async function () {
+                const data = await weather.fetchWeatherDataCoords("simple");
+                renderCoordTemplateCard(data, "simple");
+            })
+            forecastButton.addEventListener("click", async function () {
+                const data = await weather.fetchWeatherDataCoords("forecast");
+                renderCoordTemplateCard(data, "forecast");
+            })
         } catch (error) {
             console.error(error);
             alert.innerHTML = "There was an error retrieving the data.";
-        }
-    })
-    
-    //Listener for simple weather button
-    document.getElementById("simpleWeather").addEventListener("click", async function() {
-        const lastSearch = JSON.parse(localStorage.getItem("lastSearch"));
-        if (lastSearch) {
-            const weather = new WeatherFormCoord(lastSearch.lat, lastSearch.lon);
-            const data = await weather.fetchWeatherDataCoords("simple");
-            renderCoordTemplateCard(data, "simple");
-        }
-    })
-    
-    //Listener for forecast weather button
-    document.getElementById("forecastWeather").addEventListener("click", async function() {
-        const lastSearch = JSON.parse(localStorage.getItem("lastSearch"));
-        if (lastSearch) {
-            const weather = new WeatherFormCoord(lastSearch.lat, lastSearch.lon);
-            const data = await weather.fetchWeatherDataCoords("forecast");
-            renderCoordTemplateCard(data, "forecast");
         }
     })
     //Hide the other forms.
@@ -99,47 +89,11 @@ document.getElementById("weatherForm").addEventListener("submit", async function
 //     renderTemplateCard(data, "forecast");
 // });
         
-//Listener for simple weather
-//This is for the Local Storage.
-document.getElementById("simpleWeather").addEventListener("click", async function() {
-    const lastSearch = JSON.parse(localStorage.getItem("lastSearch"));
-    if (lastSearch) {
-        const weather = new WeatherForm(lastSearch.city, lastSearch.state, lastSearch.country);
-        const data = await weather.fetchWeatherData("simple");
-        renderTemplateCard(data, "simple");
-    }
-});
-        
-//Listner for forecast weather
-document.getElementById("forecastWeather").addEventListener("click", async function() {
-    const lastSearch = JSON.parse(localStorage.getItem("lastSearch"));
-    if (lastSearch) {
-        const weather = new WeatherForm(lastSearch.city, lastSearch.state, lastSearch.country);
-        const data = await weather.fetchWeatherData("forecast");
-        renderTemplateCard(data, "forecast");
-    }
-});
+//Listener for simple weathe
 //----------------------------- End of Nav button event listeners -----------------------------
 
 
 //----------------------------- Lat/Lon stuff here -----------------------------
-//Listener for form submission
-// document.getElementById("weatherFormLatLon").addEventListener("submit", async function (e) {
-//     event.preventDefault();
-//     try {
-//         const alert = document.querySelector(".alert-text");
-//         alert.innerHTML = "The data has been retrieved!";
-//         const lat = document.getElementById("latitude").value;
-//         const lon = document.getElementById("longitude").value;
-
-//         const weather = new WeatherFormCoord(lat, lon);
-
-//         localStorage.setItem("lastSearch", JSON.stringify({ lat, lon }));
-//     } catch (error) {
-//         console.error(error);
-//         alert.innerHTML = "There was an error retrieving the data.";
-//     }
-// })
 
 // //Listener for simple weather button
 // document.getElementById("simpleWeather").addEventListener("click", async function() {
@@ -161,39 +115,3 @@ document.getElementById("forecastWeather").addEventListener("click", async funct
 //     }
 // })
 //----------------------------- End of Lat/Lon stuff -----------------------------
-
-
-//----------------------------- City stuff here -----------------------------
-document.getElementById("weatherForm").addEventListener("submit", async function (e) {
-    event.preventDefault();
-    const alert = document.querySelector(".alert-text");
-    alert.innerHTML = "The data has been retrieved!";
-    const city = document.getElementById("city").value;
-    const state = document.getElementById("state").value;
-    const country = document.getElementById("country").value;
-
-    const weather = new WeatherForm(city, state, country);
-
-    localStorage.setItem("lastSearch", JSON.stringify({ city, state, country }));
-});
-
-//Listener for simple weather
-document.getElementById("simpleWeather").addEventListener("click", async function() {
-    const lastSearch = JSON.parse(localStorage.getItem("lastSearch"));
-    if (lastSearch) {
-        const weather = new WeatherForm(lastSearch.city, lastSearch.state, lastSearch.country);
-        const data = await weather.fetchWeatherData("simple");
-        renderTemplateCard(data, "simple");
-    }
-});
-
-//Listner for forecast weather
-document.getElementById("forecastWeather").addEventListener("click", async function() {
-    const lastSearch = JSON.parse(localStorage.getItem("lastSearch"));
-    if (lastSearch) {
-        const weather = new WeatherForm(lastSearch.city, lastSearch.state, lastSearch.country);
-        const data = await weather.fetchWeatherData("forecast");
-        renderTemplateCard(data, "forecast");
-    }
-});
-//----------------------------- End of City stuff -----------------------------

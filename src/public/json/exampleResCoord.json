@@ -1,44 +1,45 @@
 {
-    "coord": {
-      "lon": -118,
-      "lat": 37
-    },
-    "weather": [
-      {
-        "id": 802,
-        "main": "Clouds",
-        "description": "scattered clouds",
-        "icon": "03d"
-      }
-    ],
-    "base": "stations",
-    "main": {
-      "temp": 65.43,
-      "feels_like": 62.98,
-      "temp_min": 65.43,
-      "temp_max": 65.43,
-      "pressure": 1015,
-      "humidity": 28,
-      "sea_level": 1015,
-      "grnd_level": 809
-    },
-    "visibility": 10000,
-    "wind": {
-      "speed": 8.37,
-      "deg": 310,
-      "gust": 9.42
-    },
-    "clouds": {
-      "all": 26
-    },
-    "dt": 1721442617,
-    "sys": {
-      "country": "US",
-      "sunrise": 1721393238,
-      "sunset": 1721444939
-    },
-    "timezone": -25200,
-    "id": 5328426,
-    "name": "Big Pine",
-    "cod": 200
-  }
+  "coord": {
+    "lon": -117.4,
+    "lat": 32.7
+  },
+  "weather": [
+    {
+      "id": 802,
+      "main": "Clouds",
+      "description": "scattered clouds",
+      "icon": "03d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 75.72,
+    "feels_like": 76.62,
+    "temp_min": 73,
+    "temp_max": 83.1,
+    "pressure": 1013,
+    "humidity": 77,
+    "sea_level": 1013,
+    "grnd_level": 1013
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 5.75,
+    "deg": 260
+  },
+  "clouds": {
+    "all": 40
+  },
+  "dt": 1721784516,
+  "sys": {
+    "type": 1,
+    "id": 5142,
+    "country": "US",
+    "sunrise": 1721739468,
+    "sunset": 1721789644
+  },
+  "timezone": -25200,
+  "id": 5363943,
+  "name": "La Jolla",
+  "cod": 200
+}

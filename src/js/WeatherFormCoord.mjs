@@ -31,7 +31,7 @@ export async function renderCoordTemplateCard(data, type) {
     if (type === "simple") {
         card.innerHTML = simpleWeatherCardCoords(data);
     } else if (type === "forecast") {
-        card.innerHTML = forecastWeatherCardCoords(data);
+        card.innerHTML = await forecastWeatherCardCoords(data);
     } else {
         throw new Error("Invalid type");
     }
@@ -48,17 +48,28 @@ function simpleWeatherCardCoords(data) {
     </div>`;
 };
 
-function forecastWeatherCardCoords(data) {
+async function forecastWeatherCardCoords(data) {
     const filteredData = data.list.filter(item => {
         const date = new Date(item.dt * 1000);
         return date.getUTCHours() === 18;
     }).slice(0, 5);
 
-    return `<div class="weather-card">
-    <h2>${data.name} ${data.sys.country}</h2>
-    <img src="http://openweathermap.org/img/w/${filteredData[0].weather[0].icon}.png" alt="Weather Icon" />
-    <p>Temperature: ${filteredData[0].main.temp}°F</p>
-    <p>Weather: ${filteredData[0].weather[0].description}</p>
-    <p>Time: ${new Date(filteredData[0].dt * 1000).toLocaleTimeString()}</p>
+    const card = `<div class="weather-card">
+    <h2>${data.city.name} | ${data.city.country}</h2>
+    <p>5 Day Forecast</p>
+    <div class="forecast-grid">
+        ${filteredData.map(day => `
+            <div class="forecast-grid-item"> ${formatDays(day.dt_txt)} <br>
+                <img src="http://openweathermap.org/img/w/${day.weather[0].icon}.png" alt="Weather Icon" /> <br>
+                <p>Temperature: ${day.main.temp}°F</p>
+                <p>Weather: ${day.weather[0].description}</p>
+            </div>`).join("")}
+        </div>
     </div>`;
+    return card;
 };
+
+
+function formatDays(date) {
+    return new Date(date).toLocaleDateString("en-US", { weekday: "long" });
+}

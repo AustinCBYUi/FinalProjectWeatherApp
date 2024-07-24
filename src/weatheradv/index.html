@@ -4,9 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Weather</title>
+    <link rel="stylesheet" href="/css/styles.css" />
 </head>
+<header id="dynamic-header"></header>
 <body>
-    <div id="weatherContainer"></div>
-    <script type="module" src="../js/weatheradv.js"></script>
+    <main>
+        <div class="alert-good">
+            <p class="alert-text"></p>
+        </div>
+        <div class="alert-bad">
+            <p class="alert-text"></p>
+        </div>
+        <div class="weather-controller">
+            <h2>Search by</h2>
+            <div class="weatherbuttons">
+                <button id="lat">Latitude/Longitude</button>
+                <!-- Was named city for ID, that caused major issues..-->
+                <button id="cityButton">City/State/Country</button>
+            </div>
+            <!-- Using a container works to hide it.-->
+            <div class="lat-lon-form" hidden>
+                <form class="search" id="weatherFormLatLon">
+                    <div class="form-group">
+                        <label for="latitude">Latitude</label>
+                        <input type="text" id="latitude" name="latitude" placeholder="32.7157">
+                    </div>
+                    <div class="form-group">
+                        <label for="longitude">Longitude</label>
+                        <input type="text" id="longitude" name="longitude" placeholder="-117.1611">
+                    </div>
+                    <button type="submit" id="simpleWeather">Today</button>
+                    <button type="submit" id="forecastWeather">Forecast Weather</button>
+                </form>
+            </div>
+            <!-- End of Lat/Lon Form -->
+            
+            <div class="city-form" hidden>
+                <form class="search" id="weatherForm">
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" placeholder="San Diego">
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <input type="text" id="state" name="state" placeholder="CA">
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" name="country" placeholder="USA">
+                    </div>
+                    <div class="weatherbuttons">
+                        <button type="submit" id="simpleWeatherCity">Today</button>
+                        <button type="submit" id="forecastWeatherCity">Forecast Weather</button>
+                    </div>
+                </form>
+            </div>
+            <!-- End of City Form -->
+        </div>
+        <div id="weatherContainer"></div>
+    </main>
 </body>
+<footer id="dynamic-footer"></footer>
+<script type="module" src="js/weatheradv.js"></script>
 </html>

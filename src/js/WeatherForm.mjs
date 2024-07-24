@@ -40,7 +40,7 @@ function simpleWeatherCard(data) {
     <h2>${data.name} | ${data.sys.country}</h2>
     <img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" alt="Weather Icon" />
     <p>Temperature: ${data.main.temp}°F</p>
-    <p>Weather: ${data.weather.description}</p>
+    <p>Weather: ${data.weather[0].description}</p>
     <p>Time: ${new Date(data.dt * 1000).toLocaleTimeString()}</p>
     </div>`;
 };
