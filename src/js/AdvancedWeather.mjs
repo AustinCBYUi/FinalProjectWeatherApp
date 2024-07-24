@@ -11,25 +11,18 @@ export default class AdvWeather {
 
     //Fetches weather data for city, state, country.
     //Directly specified by weatheradv.js
-    async fetchWeatherData(type = "simple") {
+    async fetchWeatherData(search = "city", type = "simple") {
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${this.city},${this.state},${this.country}&appid=${apiKey}&units=imperial`;
 
         if (type === "forecast") {
             url = `https://api.openweathermap.org/data/2.5/forecast?q=${this.city},${this.state},${this.country}&appid=${apiKey}&units=imperial`;
         }
 
-        const response = await fetch(url);
-        const data = await response.json();
-        return data;
-    }
-
-    //Fetches weather data for latitude and longitude
-    //Directly specified by weatheradv.js
-    async fetchLatLonWeatherData(type = "simple") {
-        let url = `https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.lon}&appid=${apiKey}&units=imperial`;
-
-        if (type === "forecast") {
-            url = `https://api.openweathermap.org/data/2.5/forecast?lat=${this.lat}&lon=${this.lon}&appid=${apiKey}&units=imperial`;
+        if (search === "latlon") {
+            url = `https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.lon}&appid=${apiKey}&units=imperial`;
+            if (type === "forecast") {
+                url = `https://api.openweathermap.org/data/2.5/forecast?lat=${this.lat}&lon=${this.lon}&appid=${apiKey}&units=imperial`;
+            }
         }
 
         const response = await fetch(url);
@@ -77,7 +70,6 @@ function simpleWeatherCard(data) {
     <p>Wind Speed: ${data.wind.speed} mph</p>
     <p>Wind Direction: ${data.wind.deg}° / ${getCompassDirection(data.wind.deg)}</p>
     <p>Wind Gust: ${data.wind.gust} mph</p>
-    <p>Area Timezone: ${data.timezone}</p>
     <p>Time: ${new Date(data.dt * 1000).toLocaleTimeString()}</p>
     <p>Sunrise: ${new Date(data.sys.sunrise * 1000).toLocaleTimeString()}</p>
     <p>Sunset: ${new Date(data.sys.sunset * 1000).toLocaleTimeString()}</p>
@@ -95,10 +87,11 @@ function forecastWeatherCard(data) {
     }).slice(0, 5);
     const card = `<div class="weather-card">
     <h2>${data.city.name} | ${data.city.country}</h2>
-    <div class="forecast-container">
-        ${filteredData.map(day => {
-        return `<div class="forecast-card">
-            <h3>${new Date(day.dt * 1000).toLocaleDateString()}</h3>
+    <p>5 Day Forecast:</p>
+    <div class="forecast-grid">
+        ${filteredData.map(day => `
+            <div class="forecast-grid-item">
+            <h3>${formatDays(day.dt)}</h3>
             <img src="http://openweathermap.org/img/w/${day.weather[0].icon}.png" alt="Weather Icon" />
             <p>Temperature: ${day.main.temp}°F</p>
             <p>Weather: ${day.weather[0].description}</p>
@@ -115,11 +108,12 @@ function forecastWeatherCard(data) {
             <p>Area Timezone: ${data.city.timezone}</p>
             <p>Time: ${formatDays(data.dt, true)}</p>
             <p>Sunrise: ${formatDays(data.city.sunrise, true)}</p>
-            <p>Sunset: ${formatDays(data.city.sunset, true)}</p>
-        </div>`;
-    }).join("")}
+            <p>Sunset: No API Support for Lat/Lon</p>
+        </div>
+    `).join("")}
     </div>
     </div>`;
+    return card;
 }
 
 
