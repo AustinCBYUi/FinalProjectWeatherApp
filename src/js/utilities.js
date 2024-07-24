@@ -39,11 +39,12 @@ async function loadYear() {
 * Function to load active page
 * ******************** */
 async function loadActivePage(element) {
-    const getParent = await document.querySelector(".nav-button");
-    let getPage = getParent.textContent;
-    if (element === getPage) {
-        getParent.className = "nav-button-active";
-    }
+    const getParent = document.querySelectorAll(".nav-button");
+    getParent.forEach(item => {
+        if (item.textContent === element) {
+            item.className = "nav-button-active";
+        }
+    })
 }
 
 
